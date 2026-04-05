@@ -244,7 +244,7 @@ Make contributions feel meaningful, not transactional
 
 
 Perfect. So what you have is not a single straight-line ladder.
-It's roles based on how someone contributes — not how much they contribute.
+It's roles based on how someone contributes or shows up in the product — not how much they contribute.
 This is important because it means:
 Someone who raids like a demon is just as valuable as someone who donates funds.
 
@@ -255,10 +255,10 @@ Someone whose superpower is design, consulting, hosting calls, networking should
 Identity grows through contribution style, not rank grinding.
 
 
-So instead of pay-to-rank tiers, we use **Six Pillars of the Foundry** as the high-level frame, and **paths** for how someone actually contributes and levels up. Each pillar is a domain of contribution; each named path is how you show up inside that pillar, with earned recognition levels along the way.
+So instead of pay-to-rank tiers, we use **Seven Pillars of the Foundry** as the high-level frame, and **paths** for how someone actually contributes—or uses what we ship—and levels up. Each pillar is a domain of contribution or product participation; each named path is how you show up inside that pillar, with earned recognition levels along the way.
 This lets people belong to something that fits who they already are.
 
-The six paths (draft)
+The seven paths (draft)
 
 Contribution style
 Path name (working title)
@@ -281,6 +281,9 @@ Code, design, systems, tools, development
 Pure financial boosters
 The Vault
 LP providers, campaign funders, DEX boost supply
+Application users / players / tool users
+The Hearth — home lane; ranks Visitor → Resident → Fixture
+Ships real usage: plays the games, runs the tools, connects wallets—participation through the product
 
 These are not ranks — they are identities.
 A person chooses their path based on who they actually are.
@@ -311,6 +314,16 @@ Engineer → Takes ownership of meaningful chunks
 
 
 Architect → Shapes structure, standards, vision for builds
+
+
+For The Hearth (application users), levels:
+Visitor → Crossed the threshold; meaningful onboarding and first real time in a product
+
+
+Resident → Puts down roots: returns, knows the loops, belongs at the Hearth
+
+
+Fixture → A fixture of the Hearth—recognized, essential; the place wouldn’t feel the same without you
 
 
 …and so on for every path.
@@ -374,8 +387,11 @@ Host AMAs or bring partners (connect)
 Or fund a milestone (fuel)
 
 
+Use our apps (show up in product — Hearth path)
+
+
 This page becomes the entry gate to choosing a path.
-Someone who contributes funding is on the Vault path, just as someone who raids progresses on the Heralds path.
+Someone who contributes funding is on the Vault path, just as someone who raids progresses on the Heralds path — and someone who lives in the product progresses on the Hearth path.
 No hierarchy.
 Just different forms of strength.
 Let's choose names that feel like your world instead of just my first pass.
@@ -461,7 +477,29 @@ The Wellspring
 The Pilars
 
 
-Pick one name per category that feels closest to your identity.
+Application users / product participation (games, tools, wallet flows)
+The Hearth (chosen)
+
+
+The Residents (alternate)
+
+
+The Field
+
+
+The Commons
+
+
+The Threshold
+
+
+The Day-Ones
+
+
+The Keep
+
+
+Pick one name per category that feels closest to your identity (seven categories now, including application users).
 
 High-Level Ecosystem Roadmap
 Phase 1 — Project Visibility
@@ -531,7 +569,7 @@ Outcome:
 Contribution feels valuable and personal.
 
 Phase 6 — Identity Paths (Contribution Types)
-Define the six paths under **Six Pillars of the Foundry** (Heralds, Forge, Vault, Diplomats, Orators, Council)
+Define the seven paths under **Seven Pillars of the Foundry** (Heralds, Forge, Vault, Diplomats, Orators, Council, Hearth / application users)
 
 
 This is still cultural / manual — not automated yet

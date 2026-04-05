@@ -1,6 +1,6 @@
 # Path naming options
 
-Alternate names per contribution style (within the **Six Pillars of the Foundry** frame) to pick from. Previous: [02-pillars-paths-and-funding-page.md](02-pillars-paths-and-funding-page.md). Next: [04-ecosystem-roadmap-phases.md](04-ecosystem-roadmap-phases.md).
+Alternate names per contribution style (within the **Seven Pillars of the Foundry** frame) to pick from. Previous: [02-pillars-paths-and-funding-page.md](02-pillars-paths-and-funding-page.md). Next: [04-ecosystem-roadmap-phases.md](04-ecosystem-roadmap-phases.md).
 
 ---
 
@@ -87,4 +87,26 @@ The Wellspring
 The Pilars
 
 
-Pick one name per category that feels closest to your identity.
+Application users / product participation (games, tools, wallet flows—not builders or funders)
+**The Hearth** (chosen) — home lane; ranks **Visitor → Resident → Fixture**
+
+
+The Residents (alternate)
+
+
+The Field
+
+
+The Commons
+
+
+The Threshold (first-class “you showed up in the product”)
+
+
+The Day-Ones
+
+
+The Keep (those who keep the apps alive by using them)
+
+
+Pick one name per **category** that feels closest to your identity (seven categories now, including application users).

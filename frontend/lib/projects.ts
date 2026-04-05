@@ -3,6 +3,7 @@ import type { FoundryProject } from "./types";
 export const PROJECTS: readonly FoundryProject[] = [
   {
     slug: "weekly-spaces-boost",
+    pathSlugs: ["orators", "heralds"],
     name: "Weekly Spaces boost",
     shortGoal: "Launch a four-week Spaces cadence to keep shipping visible and community-led.",
     description:
@@ -63,6 +64,7 @@ export const PROJECTS: readonly FoundryProject[] = [
   },
   {
     slug: "recon-tactics-prototype",
+    pathSlugs: ["forge", "hearth"],
     name: "Recon Tactics prototype",
     shortGoal: "Ship a playable vertical slice for a tactics mini-game with on-chain identity hooks.",
     description:
@@ -101,6 +103,7 @@ export const PROJECTS: readonly FoundryProject[] = [
   },
   {
     slug: "crypto-tracker-dashboard",
+    pathSlugs: ["forge", "hearth"],
     name: "Crypto tracker dashboard",
     shortGoal: "A lightweight portfolio + Sui activity view for power users and creators.",
     description:
@@ -135,6 +138,7 @@ export const PROJECTS: readonly FoundryProject[] = [
   },
   {
     slug: "contributor-portal-v1",
+    pathSlugs: ["council", "hearth"],
     name: "Contributor portal v1",
     shortGoal: "Central place for paths (Heralds, Forge, Vault…) with clear next steps—no pay-to-rank.",
     description:
@@ -165,6 +169,7 @@ export const PROJECTS: readonly FoundryProject[] = [
   },
   {
     slug: "dex-listing-readiness",
+    pathSlugs: ["diplomats", "vault"],
     name: "DEX listing readiness",
     shortGoal: "Liquidity, routing checks, and comms pack for a disciplined listing push.",
     description:
@@ -193,6 +198,26 @@ export const PROJECTS: readonly FoundryProject[] = [
     trendingScore: 30,
   },
 ] as const;
+
+/** Top projects for the home dashboard (by trending score). */
+export function getHomeHighlightProjects(max = 6): FoundryProject[] {
+  return [...PROJECTS]
+    .sort((a, b) => (b.trendingScore ?? 0) - (a.trendingScore ?? 0))
+    .slice(0, max);
+}
+
+/** All projects for the home carousel, newest momentum first. */
+export function getAllProjectsSortedByTrending(): FoundryProject[] {
+  return [...PROJECTS].sort((a, b) => (b.trendingScore ?? 0) - (a.trendingScore ?? 0));
+}
+
+export function countProjectsFundingOpen(): number {
+  return PROJECTS.filter((p) => p.status === "Funding Open").length;
+}
+
+export function getProjectCount(): number {
+  return PROJECTS.length;
+}
 
 export function getProjectBySlug(slug: string): FoundryProject | undefined {
   return PROJECTS.find((p) => p.slug === slug);

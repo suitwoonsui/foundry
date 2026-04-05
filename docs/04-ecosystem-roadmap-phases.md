@@ -72,7 +72,7 @@ Outcome:
 Contribution feels valuable and personal.
 
 Phase 6 — Identity Paths (Contribution Types)
-Define the six paths under **Six Pillars of the Foundry** (Heralds, Forge, Vault, Diplomats, Orators, Council)
+Define the seven paths under **Seven Pillars of the Foundry** (Heralds, Forge, Vault, Diplomats, Orators, Council, **Hearth** / application users—see [02-pillars-paths-and-funding-page.md](02-pillars-paths-and-funding-page.md))
 
 
 This is still cultural / manual — not automated yet

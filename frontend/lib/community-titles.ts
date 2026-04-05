@@ -52,8 +52,8 @@ export const COMMUNITY_TITLES: readonly FoundryTitle[] = [
     shownOn: ["Spaces descriptions", "Site /updates bylines"],
   },
   {
-    slug: "pactkeeper-diplomat",
-    name: "Pactkeeper of the Diplomats",
+    slug: "ambassador-diplomat",
+    name: "Ambassador of the Diplomats",
     epithet: "Partnerships that lasted started with your handshake.",
     description:
       "For diplomats who close and maintain integrations or listings prep with both sides still smiling.",

@@ -1,13 +1,16 @@
-import { CommunityHomeStrip } from "@/components/community-home-strip";
-import { ProjectHub } from "@/components/project-hub";
+import { FoundryHomeHero } from "@/components/foundry-home-hero";
 import { SiteShell } from "@/components/site-shell";
-import { PROJECTS } from "@/lib/projects";
+
+export const metadata = {
+  title: "Home",
+  description:
+    "Seven pillars, earned paths, and recognition—where your commitments meet the work at Community Foundry.",
+};
 
 export default function HomePage() {
   return (
     <SiteShell>
-      <ProjectHub initialProjects={PROJECTS} />
-      <CommunityHomeStrip />
+      <FoundryHomeHero />
     </SiteShell>
   );
 }

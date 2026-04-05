@@ -25,3 +25,30 @@ body {
 code {
   font-family: ui-monospace, monospace;
 }
+
+/* Dual-pillar project cards: slow gradient drift (respect reduced motion). */
+.project-path-accent-dual-animate {
+  background-size: 220% 220%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-path-accent-dual-animate {
+    animation: project-path-accent-pan 14s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-path-accent-dual-animate {
+    background-size: 100% 100%;
+  }
+}
+
+@keyframes project-path-accent-pan {
+  0%,
+  100% {
+    background-position: 0% 42%;
+  }
+  50% {
+    background-position: 100% 58%;
+  }
+}

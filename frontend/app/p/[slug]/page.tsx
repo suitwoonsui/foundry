@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { ProjectCard } from "@/components/project-card";
 import { RewardIcons } from "@/components/reward-icons";
+import { ProjectPathAccentBg } from "@/components/project-path-accent-bg";
 import { SiteShell } from "@/components/site-shell";
+import { getProjectAccentRingColor, getProjectProgressGradient } from "@/lib/path-accents";
 import { getAllSlugs, getProjectBySlug, PROJECTS } from "@/lib/projects";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -29,13 +31,15 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   const pct = Math.min(100, Math.round((project.raisedSui / Math.max(1, project.targetSui)) * 100));
   const related = PROJECTS.filter((p) => p.slug !== project.slug).slice(0, 3);
+  const pathRing = getProjectAccentRingColor(project.pathSlugs);
+  const progressGrad = getProjectProgressGradient(project.pathSlugs);
 
   return (
     <SiteShell>
       <article className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         <nav className="text-sm text-zinc-500" aria-label="Breadcrumb">
           <Link
-            href="/"
+            href="/projects"
             className="hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--foundry-ember)]"
           >
             Projects
@@ -46,7 +50,12 @@ export default async function ProjectDetailPage({ params }: Props) {
           <span className="text-zinc-300">{project.name}</span>
         </nav>
 
-        <header className="mt-6 max-w-3xl">
+        <header
+          className={`relative mt-6 max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 ring-1 ring-inset ${pathRing ? "ring-transparent" : "ring-white/5"}`}
+          style={pathRing ? { boxShadow: `inset 0 0 0 1px ${pathRing}` } : undefined}
+        >
+          <ProjectPathAccentBg pathSlugs={project.pathSlugs} opacityClass="opacity-35" />
+          <div className="relative z-[1]">
           <div className="flex flex-wrap gap-2">
             <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-300">
               {project.category}
@@ -61,6 +70,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           <h1 className="mt-4 font-[family-name:var(--font-display)] text-3xl text-white sm:text-5xl">{project.name}</h1>
           <p className="mt-3 text-lg text-zinc-400">{project.shortGoal}</p>
           <p className="mt-4 text-sm text-zinc-500">Last updated {project.updatedAt}</p>
+          </div>
         </header>
 
         <section id="contribute" className="mt-10 scroll-mt-24 rounded-2xl border border-white/10 bg-white/[0.03] p-6">
@@ -84,8 +94,11 @@ export default async function ProjectDetailPage({ params }: Props) {
             aria-label={`Funding ${pct} percent`}
           >
             <div
-              className="h-full rounded-full bg-gradient-to-r from-[var(--foundry-ember)] to-[var(--foundry-gold)]"
-              style={{ width: `${pct}%` }}
+              className="h-full rounded-full"
+              style={{
+                width: `${pct}%`,
+                background: `linear-gradient(90deg, ${progressGrad.from}, ${progressGrad.to})`,
+              }}
             />
           </div>
           {project.walletLabel ? (

@@ -95,13 +95,13 @@ export function ProjectHub({ initialProjects }: { initialProjects: readonly Foun
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
       <div className="max-w-2xl">
-        <p className="text-sm uppercase tracking-[0.2em] text-[var(--foundry-ember-bright)]">Project hub</p>
-        <h1 className="mt-2 font-[family-name:var(--font-display)] text-3xl text-white sm:text-4xl">
-          Fuel the projects you believe in
-        </h1>
-        <p className="mt-3 text-zinc-400">
-          Each initiative gets its own lane—mission, milestones, and (soon) a dedicated Sui wallet for transparent
-          progress. Phase 1 is visibility-first; contributions go live with platform wiring.
+        <p className="text-sm uppercase tracking-[0.2em] text-[var(--foundry-ember-bright)]">Projects</p>
+        <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl text-white sm:text-3xl">
+          Fund the initiatives you believe in
+        </h2>
+        <p className="mt-3 text-sm text-zinc-400">
+          Each project has its own lane—mission, milestones, and (soon) a dedicated Sui wallet for transparent progress.
+          One way to commit among many; your path and ranks matter just as much.
         </p>
       </div>
 

@@ -13,10 +13,10 @@ export function CommunityHomeStrip() {
           Beyond funding: pillars, paths & titles
         </h2>
         <p className="mt-3 max-w-3xl text-zinc-400">
-          Projects are one lane. <strong className="font-medium text-zinc-300">Six Pillars of the Foundry</strong> frame how
-          we talk about contribution; <strong className="font-medium text-zinc-300">paths</strong> are how you actually
-          show up and progress. <strong className="font-medium text-zinc-300">Titles</strong> are earned recognition for
-          depth on a path—not ranks you buy.
+          Projects are one lane. <strong className="font-medium text-zinc-300">Seven Pillars of the Foundry</strong> frame how
+          we talk about contribution and product use; <strong className="font-medium text-zinc-300">paths</strong> are how you
+          actually show up and progress. <strong className="font-medium text-zinc-300">Titles</strong> are earned recognition
+          for depth on a path—not ranks you buy.
         </p>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-2">

@@ -6,6 +6,16 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(process.cwd()),
   },
+  async redirects() {
+    return [
+      { source: "/paths/residents", destination: "/paths/hearth", permanent: true },
+      {
+        source: "/titles/pactkeeper-diplomat",
+        destination: "/titles/ambassador-diplomat",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -55,14 +55,17 @@ export interface PathRecognitionLevel {
 }
 
 /**
- * A contribution path under Six Pillars of the Foundry: how someone shows up
- * (Heralds, Forge, Vault, …) and earns recognition along that path.
+ * A path under Seven Pillars of the Foundry: how someone contributes, uses our apps,
+ * or both (Heralds, Forge, Vault, Hearth, …) and earns recognition along that path.
  */
 export interface ContributionPath {
   readonly slug: string;
   readonly name: string;
   readonly shortLabel: string;
+  /** One line for cards; home row uses `homeCue` for a shorter hook. */
   readonly tagline: string;
+  /** One or two words (or a very short phrase) for the home pillars strip only. */
+  readonly homeCue: string;
   readonly whatYouDo: string;
   readonly levels: readonly PathRecognitionLevel[];
   readonly accentClass: string;
@@ -81,6 +84,11 @@ export interface FoundryTitle {
 
 export interface FoundryProject {
   readonly slug: string;
+  /**
+   * Contribution path slugs this project aligns with (see `/paths`). First is primary for ring/progress.
+   * Drives pillar-colored wash on cards; two slugs get a blended gradient with gentle motion.
+   */
+  readonly pathSlugs?: readonly string[];
   readonly name: string;
   readonly shortGoal: string;
   readonly description: string;

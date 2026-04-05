@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { ProjectPathAccentBg } from "@/components/project-path-accent-bg";
+import { getProjectAccentRingColor, getProjectProgressGradient } from "@/lib/path-accents";
 import type { FoundryProject } from "@/lib/types";
 import { RewardIcons } from "./reward-icons";
 
@@ -22,9 +24,16 @@ function highlightText(text: string, query: string) {
 
 export function ProjectCard({ project, query }: { project: FoundryProject; query: string }) {
   const pct = Math.min(100, Math.round((project.raisedSui / Math.max(1, project.targetSui)) * 100));
+  const ring = getProjectAccentRingColor(project.pathSlugs);
+  const progress = getProjectProgressGradient(project.pathSlugs);
 
   return (
-    <article className="flex flex-col rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-5 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.9)] transition-transform hover:-translate-y-0.5 hover:border-[var(--foundry-ember)]/35">
+    <article
+      className={`relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-5 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.9)] ring-1 ring-inset transition-transform hover:-translate-y-0.5 hover:border-[var(--foundry-ember)]/35 ${ring ? "ring-transparent" : "ring-white/5"}`}
+      style={ring ? { boxShadow: `inset 0 0 0 1px ${ring}` } : undefined}
+    >
+      <ProjectPathAccentBg pathSlugs={project.pathSlugs} opacityClass="opacity-40" />
+      <div className="relative z-[1] flex flex-col">
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div className="min-w-0 flex-1">
           <h2 className="truncate font-[family-name:var(--font-display)] text-lg text-white sm:text-xl">
@@ -60,8 +69,11 @@ export function ProjectCard({ project, query }: { project: FoundryProject; query
           aria-label={`Funding ${pct} percent`}
         >
           <div
-            className="h-full rounded-full bg-gradient-to-r from-[var(--foundry-ember)] to-[var(--foundry-gold)]"
-            style={{ width: `${pct}%` }}
+            className="h-full rounded-full"
+            style={{
+              width: `${pct}%`,
+              background: `linear-gradient(90deg, ${progress.from}, ${progress.to})`,
+            }}
           />
         </div>
         <p className="mt-1 text-xs text-zinc-500">Phase 1 — illustrative until live wallet sync.</p>
@@ -91,6 +103,7 @@ export function ProjectCard({ project, query }: { project: FoundryProject; query
         >
           Contribute
         </Link>
+      </div>
       </div>
     </article>
   );

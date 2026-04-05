@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s · Community Foundry",
   },
   description:
-    "Choose what we build together — transparent per-project funding on Sui, with rewards that honor early believers.",
+    "Seven pillars, earned paths, and transparent project funding on Sui — your commitments here matter as much as what you fund.",
 };
 
 export default function RootLayout({
