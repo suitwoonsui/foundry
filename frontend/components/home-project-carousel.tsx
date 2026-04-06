@@ -14,11 +14,11 @@ function HighlightCard({ project }: { project: FoundryProject }) {
   return (
     <li
       data-carousel-item
-      className="w-[min(280px,calc(100vw-5rem))] shrink-0 snap-start sm:w-[280px]"
+      className="shrink-0 snap-start basis-[min(280px,100%)] sm:basis-[280px]"
     >
       <Link
         href={`/p/${project.slug}`}
-        className={`group relative flex h-full min-h-[12rem] flex-col overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] p-4 ring-1 ring-inset transition-colors hover:border-[var(--foundry-ember)]/35 hover:bg-white/[0.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--foundry-ember)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--foundry-void)] ${ring ? "ring-transparent" : "ring-white/5"}`}
+        className={`group relative flex h-full min-h-[10.5rem] flex-col overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] p-3.5 ring-1 ring-inset transition-colors hover:border-[var(--foundry-ember)]/35 hover:bg-white/[0.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--foundry-ember)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--foundry-void)] sm:min-h-[12rem] sm:p-4 ${ring ? "ring-transparent" : "ring-white/5"}`}
         style={ring ? { boxShadow: `inset 0 0 0 1px ${ring}` } : undefined}
       >
         <ProjectPathAccentBg pathSlugs={project.pathSlugs} opacityClass="opacity-55" />
@@ -102,16 +102,19 @@ export function HomeProjectCarousel({ projects }: { projects: readonly FoundryPr
 
   const showArrows = projects.length > 1;
 
+  const navBtnClass =
+    "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-lg text-white transition-colors hover:border-[var(--foundry-ember)]/40 hover:bg-white/10 disabled:pointer-events-none disabled:opacity-25 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--foundry-ember)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--foundry-void)]";
+
   return (
     <div className="mt-8" role="region" aria-label="Project highlights carousel">
-      <div className="flex items-center gap-2 sm:gap-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center sm:gap-3">
         {showArrows ? (
           <button
             type="button"
             aria-label="Previous project"
             disabled={!canPrev}
             onClick={() => step(-1)}
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-lg text-white transition-colors hover:border-[var(--foundry-ember)]/40 hover:bg-white/10 disabled:pointer-events-none disabled:opacity-25 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--foundry-ember)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--foundry-void)]"
+            className={`${navBtnClass} hidden sm:flex sm:col-start-1 sm:row-start-1`}
           >
             <span aria-hidden className="-mt-0.5 block font-[family-name:var(--font-display)] text-xl leading-none">
               ‹
@@ -121,8 +124,8 @@ export function HomeProjectCarousel({ projects }: { projects: readonly FoundryPr
 
         <ul
           ref={scrollerRef}
-          className="flex min-h-0 min-w-0 flex-1 snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth pb-1 [-ms-overflow-style:none] [scrollbar-width:none] focus:outline-none [&::-webkit-scrollbar]:hidden"
-          tabIndex={-1}
+          className="col-start-1 row-start-1 flex min-h-0 w-full min-w-0 touch-pan-x snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain scroll-smooth pb-1 [-ms-overflow-style:none] [scrollbar-width:none] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--foundry-ember)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--foundry-void)] sm:col-start-2 sm:row-start-1 [&::-webkit-scrollbar]:hidden"
+          tabIndex={0}
         >
           {projects.map((p) => (
             <HighlightCard key={p.slug} project={p} />
@@ -135,17 +138,44 @@ export function HomeProjectCarousel({ projects }: { projects: readonly FoundryPr
             aria-label="Next project"
             disabled={!canNext}
             onClick={() => step(1)}
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-lg text-white transition-colors hover:border-[var(--foundry-ember)]/40 hover:bg-white/10 disabled:pointer-events-none disabled:opacity-25 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--foundry-ember)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--foundry-void)]"
+            className={`${navBtnClass} hidden sm:flex sm:col-start-3 sm:row-start-1`}
           >
             <span aria-hidden className="-mt-0.5 block font-[family-name:var(--font-display)] text-xl leading-none">
               ›
             </span>
           </button>
         ) : null}
+
+        {showArrows ? (
+          <div className="col-start-1 row-start-2 flex justify-center gap-2 sm:hidden">
+            <button
+              type="button"
+              aria-label="Previous project"
+              disabled={!canPrev}
+              onClick={() => step(-1)}
+              className={navBtnClass}
+            >
+              <span aria-hidden className="-mt-0.5 block font-[family-name:var(--font-display)] text-xl leading-none">
+                ‹
+              </span>
+            </button>
+            <button
+              type="button"
+              aria-label="Next project"
+              disabled={!canNext}
+              onClick={() => step(1)}
+              className={navBtnClass}
+            >
+              <span aria-hidden className="-mt-0.5 block font-[family-name:var(--font-display)] text-xl leading-none">
+                ›
+              </span>
+            </button>
+          </div>
+        ) : null}
       </div>
       {showArrows ? (
         <p className="mt-2 text-center text-xs text-zinc-600 sm:text-left">
-          Each arrow moves one project. Swipe the row on touch screens.
+          Swipe the row horizontally to move between projects, or use the arrows. Snaps to each card.
         </p>
       ) : null}
     </div>
