@@ -42,13 +42,14 @@ export const COMMUNITY_TITLES: readonly FoundryTitle[] = [
     shownOn: ["Private Council roster", "AMA intros"],
   },
   {
-    slug: "chorus-orator",
-    name: "Chorus of the Orators",
-    epithet: "The room always knew why the work mattered when you held the mic.",
+    slug: "maestro-orator",
+    name: "Maestro of the Orators",
+    epithet: "The room always knew why the work mattered when you set the tempo.",
     description:
-      "For hosts who run repeatable, high-signal public calls that tie narrative to shipped work.",
+      "For hosts who curate repeatable public runs and mentor others so narrative, cadence, and shipped work stay aligned.",
     primaryPathSlug: "orators",
-    howEarned: "Program owner + community feedback after a series of hosted sessions.",
+    howEarned:
+      "Program leads + community feedback after sustained Orators-path depth — not a single spotlight call.",
     shownOn: ["Spaces descriptions", "Site /updates bylines"],
   },
   {
@@ -78,4 +79,23 @@ export function getTitleBySlug(slug: string): FoundryTitle | undefined {
 
 export function getAllTitleSlugs(): string[] {
   return COMMUNITY_TITLES.map((t) => t.slug);
+}
+
+/** DOM id for deep links to an honorific block on a path page. */
+export function honorificAnchorId(titleSlug: string): string {
+  return `title-${titleSlug}`;
+}
+
+/** Canonical URL for a catalog honorific (lives under Paths). */
+export function honorificPathHref(title: FoundryTitle): string {
+  const base = title.primaryPathSlug ? `/paths/${title.primaryPathSlug}` : "/paths";
+  return `${base}#${honorificAnchorId(title.slug)}`;
+}
+
+export function getTitlesForPath(pathSlug: string): readonly FoundryTitle[] {
+  return COMMUNITY_TITLES.filter((t) => t.primaryPathSlug === pathSlug);
+}
+
+export function getCrossPathTitles(): readonly FoundryTitle[] {
+  return COMMUNITY_TITLES.filter((t) => !t.primaryPathSlug);
 }

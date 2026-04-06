@@ -118,7 +118,7 @@ At a glance:
 |------|--------|--------|--------|
 | **The Heralds** | Spark | Signal | Beacon |
 | **The Council** | Scribe | Sage | Oracle |
-| **The Orators** | Voice | Harbinger | Chorus |
+| **The Orators** | Voice | Curator | Maestro |
 | **The Diplomats** | Envoy | Emissary | Ambassador |
 | **The Forge** | Apprentice | Engineer | Architect |
 | **The Vault** | Patron | Steward | Cornerstone |

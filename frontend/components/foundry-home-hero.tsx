@@ -33,7 +33,7 @@ export function FoundryHomeHero() {
             href="/titles"
             className="font-medium text-[var(--foundry-ember-bright)] hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--foundry-ember)]"
           >
-            recognition titles
+            My titles
           </Link>
           , or{" "}
           <Link

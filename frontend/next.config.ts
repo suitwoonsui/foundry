@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
         destination: "/titles/ambassador-diplomat",
         permanent: true,
       },
+      {
+        source: "/titles/chorus-orator",
+        destination: "/titles/maestro-orator",
+        permanent: true,
+      },
     ];
   },
 };

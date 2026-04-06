@@ -26,6 +26,7 @@ Below, “product intent” comes from the Foundry docs (`01-core-concept…`, `
 | Foundry capability (current or planned) | Aqueduct module(s) | Typical platform surface | Notes |
 |----------------------------------------|---------------------|---------------------------|--------|
 | Remote config: tiers copy, feature flags, which categories are live | **Helm** | `/api/app-config` | Low effort; no chain. Good first integration. |
+| **Advancement / tier / label** rules stored on-chain per app (badges, rank thresholds, discount keys—key–value map) | **Insignia** | `/api/insignia` | Complements **Helm** when config should live in the chart **Insignia** registry; admin writes need **CorridorAdminCap** and platform contract IDs (`INSIGNIA_REGISTRY_OBJECT_ID_*`, `AQUEDUCT_INSIGNIA_PACKAGE_ID_*`). See `Aqueduct Platform/backend/app/api/insignia/route.ts`. |
 | Show real **per-project wallet** balance / activity for transparency | **Sonar** (via platform) | `/api/sonar` (and batch variants) | Platform performs chain reads; Foundry backend should not talk to RPC directly for this if you follow the shooter pattern. |
 | **Donate / purchase** perks as defined SKUs (store flow) | **Terminal**, **Provisions** | `/api/store/*`, catalog / provisions | Aligns with “contribution tier → perk” if modeled as catalog items. |
 | Build & submit **signed** transactions from the browser or server | **Channel** | `/api/channel/batch`, `/api/channel/execute` | Platform builds bytes; user or app wallet signs; execute submits. |
@@ -133,10 +134,11 @@ Below, “product intent” comes from the Foundry docs (`01-core-concept…`, `
 ## 5. Suggested sequencing (after backend exists)
 
 1. **Helm** — config without chain risk.  
-2. **Sonar** (read-only) — real balances for project wallets if transparency is the next story.  
-3. **Channel** — once any transaction is required from the Foundry UX.  
-4. **Terminal + Provisions + Shipyard** — when tiers become real purchases and NFT/badge fulfillment.  
-5. **Sustain / Glacier** — when rewards or vault releases are automated and tied to milestones.
+2. **Insignia** (optional) — if path/rank/tier rules should be chart-backed alongside **Helm** JSON; otherwise defer until you need on-chain advancement config.  
+3. **Sonar** (read-only) — real balances for project wallets if transparency is the next story.  
+4. **Channel** — once any transaction is required from the Foundry UX.  
+5. **Terminal + Provisions + Shipyard** — when tiers become real purchases and NFT/badge fulfillment.  
+6. **Sustain / Glacier** — when rewards or vault releases are automated and tied to milestones.
 
 This order can shift if you prioritize vault-based funding (**Glacier**) before a classic store catalog. If you lean into **consumables**, plan **Reservoir** alongside **Terminal**/**Sustain** (see **§3.9**).
 

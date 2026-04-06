@@ -43,8 +43,10 @@ Path cards, individual path headers, and the home pillar strip use the same **`a
 | Order | Rank | Summary |
 |-------|------|---------|
 | 1 | **Voice** | Co-host with warmth, ask sharp questions, hold attention. |
-| 2 | **Harbinger** | Run the series and own every beat of show flow. |
-| 3 | **Chorus** | Train hosts, lock cadence, tie stages to shipped work. |
+| 2 | **Curator** | Program recurring beats: shape lineup, arc, and flow for Spaces and AMAs. |
+| 3 | **Maestro** | Train hosts, lock cadence, tie stages to shipped work. |
+
+**Earned honorific (separate from ranks):** *Maestro of the Orators* — see `apps/foundry/frontend/lib/community-titles.ts` (full copy on the Orators path page at `#title-maestro-orator`; legacy `/titles/maestro-orator` and `/titles/chorus-orator` resolve there).
 
 ---
 

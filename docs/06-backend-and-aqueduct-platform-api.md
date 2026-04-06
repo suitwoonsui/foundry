@@ -13,7 +13,7 @@ It assumes you already have (or will run) the **Aqueduct Platform** backend (`Aq
 | Layer | Responsibility |
 |--------|----------------|
 | **Foundry backend** | Foundry-only HTTP API: auth, business rules, aggregations, secrets (API keys), optional chain signing for your own Move package. |
-| **Aqueduct Platform** | Shared services: catalog/store, **Reservoir** (**consumables repository**—credits, tickets, and other consumables tracked and consumed via platform APIs; the shooter’s game-pass play credits are one use case—not “show the user’s SUI/coin wallet balance”), tournaments/events (Station/Regatta), stats (Hydroscope), app config (Helm), Shipyard/NFTs, Sustain/rewards, Channel (build + execute txs), Sonar (read/simulate chain through the platform), Glacier vaults, etc. |
+| **Aqueduct Platform** | Shared services: catalog/store, **Reservoir** (**consumables repository**—credits, tickets, and other consumables tracked and consumed via platform APIs; the shooter’s game-pass play credits are one use case—not “show the user’s SUI/coin wallet balance”), tournaments/events (Station/Regatta), stats (Hydroscope), app config (Helm), **Insignia** (on-chain **advancement / tier / label** key–value config per app—badges, ranks, discount rules, etc.), Shipyard/NFTs, Sustain/rewards, Channel (build + execute txs), Sonar (read/simulate chain through the platform), Glacier vaults, etc. |
 
 **Design rule (same as shooter-game):** for platform-backed features, the Foundry backend should talk to the platform **only via its public HTTP API**. The platform owns RPC/Sonar and ecosystem routing; your app sends **corridor identity + API key** and calls documented routes.
 
@@ -122,6 +122,7 @@ Abbreviated mapping (paths are under the platform host):
 | App config | `/api/app-config` | `platformAppConfigClient` |
 | Stats / leaderboard | `/api/stats/*` | `platformStatsClient` |
 | Shipyard / badges | `/api/nfts/*` | badge helpers, `getHasSoulboundBadge`, mint flows |
+| **Insignia** (advancement markers / tier config) | `/api/insignia` | `getInsigniaService` — GET reads app-scoped config map; POST/DELETE require **CorridorAdminCap** and platform env `INSIGNIA_REGISTRY_OBJECT_ID_*`, `AQUEDUCT_INSIGNIA_PACKAGE_ID_*` |
 | Sonar (chain read via platform) | `/api/sonar`, batch variants | used when platform is configured for reads |
 
 **Transaction flow:** platform **builds** transaction bytes (`channel/batch` or a dedicated build route); your wallet (player or server-held key) **signs**; you **submit** via `channel/execute`. The platform does not sign on your behalf for those execute flows.

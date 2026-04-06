@@ -1,5 +1,7 @@
 import { FoundryHomeHero } from "@/components/foundry-home-hero";
+import { HomeRecognitionStrip } from "@/components/home-recognition-strip";
 import { SiteShell } from "@/components/site-shell";
+import { MOCK_USER } from "@/lib/mock-user";
 
 export const metadata = {
   title: "Home",
@@ -10,6 +12,7 @@ export const metadata = {
 export default function HomePage() {
   return (
     <SiteShell>
+      <HomeRecognitionStrip items={MOCK_USER.recognitionItems} />
       <FoundryHomeHero />
     </SiteShell>
   );

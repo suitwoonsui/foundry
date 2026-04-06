@@ -43,8 +43,8 @@ export const CONTRIBUTION_PATHS: readonly ContributionPath[] = [
     accentClass: "from-sky-500/20 to-cyan-500/10 ring-sky-500/25",
     levels: [
       { id: "o1", name: "Voice", summary: "Co-host with warmth, ask sharp questions, hold attention." },
-      { id: "o2", name: "Harbinger", summary: "Run the series and own every beat of show flow." },
-      { id: "o3", name: "Chorus", summary: "Train hosts, lock cadence, tie stages to shipped work." },
+      { id: "o2", name: "Curator", summary: "Program recurring beats: shape lineup, arc, and flow for Spaces and AMAs." },
+      { id: "o3", name: "Maestro", summary: "Train hosts, lock cadence, tie stages to shipped work." },
     ],
   },
   {

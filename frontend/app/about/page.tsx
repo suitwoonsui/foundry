@@ -46,11 +46,15 @@ export default function AboutPage() {
             ) alongside builders, hosts, advocates, and more.
           </li>
           <li>
-            <strong className="text-white">Titles are earned.</strong>{" "}
-            <Link href="/titles" className="text-[var(--foundry-ember-bright)] hover:underline">
-              Recognition titles
+            <strong className="text-white">Honorifics are earned.</strong> Each{" "}
+            <Link href="/paths" className="text-[var(--foundry-ember-bright)] hover:underline">
+              path
             </Link>{" "}
-            honor depth on a path; they are not something you buy for status or governance by default.
+            explains its ladder and any named honorifics for that lane.{" "}
+            <Link href="/titles" className="text-[var(--foundry-ember-bright)] hover:underline">
+              My titles
+            </Link>{" "}
+            will list the ones tied to your account when sign-in ships; they are not pay-to-rank by default.
           </li>
         </ul>
         <p className="mt-10 text-sm text-zinc-500">

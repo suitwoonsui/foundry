@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { HonorificSection } from "@/components/honorific-section";
 import { SiteShell } from "@/components/site-shell";
-import { COMMUNITY_TITLES } from "@/lib/community-titles";
+import { getTitlesForPath } from "@/lib/community-titles";
 import { getAllPathSlugs, getPathBySlug } from "@/lib/contribution-paths";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -25,7 +26,7 @@ export default async function PathDetailPage({ params }: Props) {
   const path = getPathBySlug(slug);
   if (!path) notFound();
 
-  const relatedTitles = COMMUNITY_TITLES.filter((t) => t.primaryPathSlug === path.slug);
+  const pathHonorifics = getTitlesForPath(path.slug);
 
   return (
     <SiteShell>
@@ -74,25 +75,23 @@ export default async function PathDetailPage({ params }: Props) {
           </ol>
         </section>
 
-        {relatedTitles.length > 0 ? (
-          <section className="mt-10" aria-labelledby="titles-heading">
-            <h2 id="titles-heading" className="font-[family-name:var(--font-display)] text-xl text-white">
-              Related titles
+        {pathHonorifics.length > 0 ? (
+          <section className="mt-10" aria-labelledby="honorifics-heading">
+            <h2 id="honorifics-heading" className="font-[family-name:var(--font-display)] text-xl text-white">
+              Earned honorifics
             </h2>
-            <p className="mt-2 text-sm text-zinc-500">Earned honorifics often associated with this path.</p>
-            <ul className="mt-4 space-y-2">
-              {relatedTitles.map((t) => (
-                <li key={t.slug}>
-                  <Link
-                    href={`/titles/${t.slug}`}
-                    className="block min-h-[44px] rounded-xl border border-white/10 px-4 py-3 text-white transition-colors hover:border-[var(--foundry-ember)]/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--foundry-ember)]"
-                  >
-                    {t.name}
-                    <span className="mt-0.5 block text-sm text-zinc-500">{t.epithet}</span>
-                  </Link>
-                </li>
+            <p className="mt-2 text-sm text-zinc-500">
+              Named recognition for depth on this path — not ranks you buy. Your own awards show on{" "}
+              <Link href="/titles" className="text-[var(--foundry-ember-bright)] hover:underline">
+                My titles
+              </Link>{" "}
+              when accounts are wired.
+            </p>
+            <div className="mt-6 space-y-6">
+              {pathHonorifics.map((t) => (
+                <HonorificSection key={t.slug} title={t} />
               ))}
-            </ul>
+            </div>
           </section>
         ) : null}
 
